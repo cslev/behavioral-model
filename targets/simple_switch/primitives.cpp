@@ -41,6 +41,7 @@ using bm::CounterArray;
 using bm::RegisterArray;
 using bm::NamedCalculation;
 using bm::HeaderStack;
+using bm::PHV;
 
 class modify_field : public ActionPrimitive<Data &, const Data &> {
   void operator ()(Data &dst, const Data &src) {
@@ -148,6 +149,22 @@ class drop : public ActionPrimitive<> {
     }
   }
 };
+
+//Added new test function, which should increase the first argument's value
+//with one and returns it
+REGISTER_PRIMITIVE(increase);
+
+class increase :
+  public ActionPrimitive<Data &, const Data &) {
+    void operator()(Data &f, const Data &operand) {
+      // f.increase(operand);
+      std::cout << "+--------------------------------+" << endl;
+      std::cout << "|Extern called from primitives.h!|" << endl;
+      std::cout << "+--------------------------------+" << endl;
+    }
+  };
+//------------------------------------------------------------------------------
+
 
 REGISTER_PRIMITIVE(drop);
 

@@ -64,6 +64,9 @@ REGISTER_HASH(hash_ex);
 REGISTER_HASH(bmv2_hash);
 
 extern int import_primitives();
+// Importing our extern function
+extern int import_extern_increase();
+
 
 packet_id_t SimpleSwitch::packet_id = 0;
 
@@ -135,6 +138,8 @@ SimpleSwitch::SimpleSwitch(port_t max_port, bool enable_swap)
   force_arith_header("intrinsic_metadata");
 
   import_primitives();
+  //import our external function
+  import_extern_increase();
 }
 
 #define PACKET_LENGTH_REG_IDX 0
