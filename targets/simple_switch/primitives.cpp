@@ -152,17 +152,18 @@ class drop : public ActionPrimitive<> {
 
 //Added new test function, which should increase the first argument's value
 //with one and returns it
-REGISTER_PRIMITIVE(increase);
 
 class increase :
-  public ActionPrimitive<Data &, const Data &) {
+  public ActionPrimitive<Data &, const Data &> {
     void operator()(Data &f, const Data &operand) {
       // f.increase(operand);
-      std::cout << "+--------------------------------+" << endl;
-      std::cout << "|Extern called from primitives.h!|" << endl;
-      std::cout << "+--------------------------------+" << endl;
+      std::cout << "+--------------------------------+" << std::endl;
+      std::cout << "|Extern called from primitives.h!|" << std::endl;
+      std::cout << "+--------------------------------+" << std::endl;
     }
   };
+REGISTER_PRIMITIVE(increase);
+
 //------------------------------------------------------------------------------
 
 
