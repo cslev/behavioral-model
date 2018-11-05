@@ -28,6 +28,7 @@
 #include <vector>
 #include <iosfwd>
 
+
 #include <cstring>
 #include <cassert>
 
@@ -188,6 +189,19 @@ class Data {
     assert(arith);
     return value.convert_to<unsigned int>();
   }
+
+  // -- LEVI
+  // double get_double() const {
+  //   assert(arith);
+  //   return value.convert_to<double>();
+  // }
+  //
+  // char get_char() const {
+  //   assert(arith);
+  //   return value.convert_to<char>();
+  // }
+
+  // -- END LEVI
 
   //! Get the value of Data has a `uint64_t`
   uint64_t get_uint64() const {
