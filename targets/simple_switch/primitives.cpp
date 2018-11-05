@@ -30,6 +30,8 @@
 #include <random>
 #include <thread>
 
+#include <stdlib.h>     /* atof */
+
 template <typename... Args>
 using ActionPrimitive = bm::ActionPrimitive<Args...>;
 
@@ -150,21 +152,35 @@ class drop : public ActionPrimitive<> {
   }
 };
 
-//Added new test function, which should increase the first argument's value
-//with one and returns it
+// -- LEVI
+class p4_logger :
+  public ActionPrimitive<const Data &> {
+    void operator()(const Data &operand) {
 
-class increase :
-  public ActionPrimitive<Data &, const Data &> {
-    void operator()(Data &f, const Data &operand) {
-      // f.increase(operand);
-      std::cout << "+--------------------------------+" << std::endl;
-      std::cout << "|Extern called from primitives.h!|" << std::endl;
-      std::cout << "+--------------------------------+" << std::endl;
+      std::cout << "\033[1;34m[P4 logger]\t " << operand << "\033[0m]" << std::endl;
     }
   };
-REGISTER_PRIMITIVE(increase);
+REGISTER_PRIMITIVE(p4_logger);
 
-//------------------------------------------------------------------------------
+
+// class make_uint64 :
+//   public ActionPrimitive<Data &, const Data &, const Data &> {
+//     void operator ()(Data &result, const Data &double_number, const Data &precision)
+//     {
+//         uint64_t test_uint = double_number.get_uint64();
+//         double test_double = double_number.get_double();
+//         // Data test_string = double_number.get();
+//         std::cout << "=== uint64_t value: " << test_uint << std::endl;
+//         std::cout << "=== double value: " << static_cast<double>(test_double) << std::endl;
+//         std::cout << "=== hex value: " << double_number.get_string() << std::endl;
+//
+//         // int integerized_num = (int)double_number;
+//         // std::cout << "converting double..." << std::endl;
+//
+//     }
+//   };
+// REGISTER_PRIMITIVE(make_uint64);
+//-- END LEVI
 
 
 REGISTER_PRIMITIVE(drop);
