@@ -60,6 +60,7 @@ class Data {
  public:
   Data() {}
 
+
   //! Constructs a Data instance from any integral type
   template<typename T,
            typename std::enable_if<std::is_integral<T>::value, int>::type = 0>
@@ -90,6 +91,7 @@ class Data {
   //! the sign needs to come before the prefix (if present).
   explicit Data(const std::string &hexstring) {
     set(hexstring);
+
   }
 
   virtual void export_bytes() {}
@@ -189,19 +191,6 @@ class Data {
     assert(arith);
     return value.convert_to<unsigned int>();
   }
-
-  // -- LEVI
-  // double get_double() const {
-  //   assert(arith);
-  //   return value.convert_to<double>();
-  // }
-  //
-  // char get_char() const {
-  //   assert(arith);
-  //   return value.convert_to<char>();
-  // }
-
-  // -- END LEVI
 
   //! Get the value of Data has a `uint64_t`
   uint64_t get_uint64() const {
