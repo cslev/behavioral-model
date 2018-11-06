@@ -156,8 +156,11 @@ class drop : public ActionPrimitive<> {
 class p4_logger :
   public ActionPrimitive<const Data &> {
     void operator()(const Data &operand) {
+      std::stringstream stream;
+      stream << std::hex << operand.get_uint64();
+      std::string result(stream.str());
+      std::cout << "\033[1;34m[P4 logger]\t " << result << "\033[0m]" << std::endl;
 
-      std::cout << "\033[1;34m[P4 logger]\t " << operand << "\033[0m]" << std::endl;
     }
   };
 REGISTER_PRIMITIVE(p4_logger);
