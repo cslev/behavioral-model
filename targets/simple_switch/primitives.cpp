@@ -166,26 +166,6 @@ class p4_logger :
 REGISTER_PRIMITIVE(p4_logger);
 
 
-// class make_uint64 :
-//   public ActionPrimitive<Data &, const Data &, const Data &> {
-//     void operator ()(Data &result, const Data &double_number, const Data &precision)
-//     {
-//         uint64_t test_uint = double_number.get_uint64();
-//         double test_double = double_number.get_double();
-//         // Data test_string = double_number.get();
-//         std::cout << "=== uint64_t value: " << test_uint << std::endl;
-//         std::cout << "=== double value: " << static_cast<double>(test_double) << std::endl;
-//         std::cout << "=== hex value: " << double_number.get_string() << std::endl;
-//
-//         // int integerized_num = (int)double_number;
-//         // std::cout << "converting double..." << std::endl;
-//
-//     }
-//   };
-// REGISTER_PRIMITIVE(make_uint64);
-//-- END LEVI
-
-
 REGISTER_PRIMITIVE(drop);
 
 class exit_ : public ActionPrimitive<> {
