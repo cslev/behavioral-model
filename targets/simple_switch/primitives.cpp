@@ -150,6 +150,9 @@ class drop : public ActionPrimitive<> {
     }
   }
 };
+REGISTER_PRIMITIVE(drop);
+
+
 
 // -- LEVI
 class p4_logger :
@@ -166,8 +169,6 @@ class p4_logger :
   };
 REGISTER_PRIMITIVE(p4_logger);
 // -- END LEVI
-
-REGISTER_PRIMITIVE(drop);
 
 class exit_ : public ActionPrimitive<> {
   void operator ()() {
