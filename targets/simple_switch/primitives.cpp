@@ -30,7 +30,6 @@
 #include <random>
 #include <thread>
 
-#include <stdlib.h>     /* atof */
 
 template <typename... Args>
 using ActionPrimitive = bm::ActionPrimitive<Args...>;
@@ -156,15 +155,17 @@ class drop : public ActionPrimitive<> {
 class p4_logger :
   public ActionPrimitive<const Data &> {
     void operator()(const Data &operand) {
+      std::string l  = "\033[1;34m[P4 logger]\t";
+      std::string ll = "\033[0m\n";
       std::stringstream stream;
       stream << std::hex << operand.get_uint64();
       std::string result(stream.str());
-      std::cout << "\033[1;34m[P4 logger]\t " << result << "\033[0m]" << std::endl;
 
+      std::cout << l << result << ll;
     }
   };
 REGISTER_PRIMITIVE(p4_logger);
-
+// -- END LEVI
 
 REGISTER_PRIMITIVE(drop);
 

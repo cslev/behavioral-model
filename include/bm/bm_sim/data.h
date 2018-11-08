@@ -198,6 +198,7 @@ class Data {
     return value.convert_to<uint64_t>();
   }
 
+
   //! get the value of Data has an integer
   int get_int() const {
     assert(arith);
